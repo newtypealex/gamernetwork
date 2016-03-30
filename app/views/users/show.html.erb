@@ -1,0 +1,12 @@
+<h1>User Dashboard</h1>
+
+<p>
+  <strong>User:</strong> <%= @user.email %>
+</p>
+
+<p>Followed Games</p>
+<ul>
+  <% @user.games.each do |game| %>
+    <li><%= game.title %></li>
+  <% end %>
+</ul>

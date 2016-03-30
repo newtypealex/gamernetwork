@@ -1,0 +1,30 @@
+<%= form_for @game do |f| %>
+
+<% if @game.errors.any? %>
+<% @game.errors.full_messages.each do |message| %>
+<p><%= message %></p>
+<% end %>
+<% end %>
+
+<p>
+<%= f.label :title %><br>
+<%= f.text_field :title %>
+</p>
+
+<p>
+<%= f.label :genre %><br>
+<%= f.text_field :genre %>
+</p>
+
+<p>
+<%= f.label :description %><br>
+<%= f.text_field :description %>
+</p>
+
+<p>
+<%= f.label :launch_date %><br>
+<%= f.text_field :launch_date %>
+</p>
+
+<%= f.submit %>
+<% end %>

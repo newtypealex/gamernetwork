@@ -1,0 +1,19 @@
+<%= link_to "GAMES", games_path %>
+
+<h1>Game Page</h1>
+<p>
+  <strong>Game Title:</strong> <%= @game.title %>
+</p>
+<p>
+  <strong>Game Genre:</strong> <%= @game.genre %>
+</p>
+<p>
+  <strong>Game Description:</strong> <%= @game.description %>
+</p>
+<p>
+  <strong>Game Launch Date:</strong> <%= @game.launch_date %>
+</p>
+
+
+<%= link_to "EDIT", edit_game_path(@game) %>
+<%= link_to "DELETE", game_path(@game), method: :delete, data: {confirm: "Are you sure you want to delete this character?"}%>

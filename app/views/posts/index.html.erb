@@ -1,0 +1,17 @@
+<h1>Posts</h1>
+<div>
+<%= link_to "Create New Post", new_post_path %>
+</div>
+<br>
+<table>
+  <tr>
+    <th>Post Title</th>
+  </tr>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to(post.title,post_path(post)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

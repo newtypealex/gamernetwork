@@ -1,0 +1,23 @@
+<%= form_for @developer, html: { multipart: true } do |f| %>
+
+<% if @developer.errors.any? %>
+<% @developer.errors.full_messages.each do |message| %>
+<p><%= message %></p>
+<% end %>
+<% end %>
+
+<p>
+<%= f.label :name %><br>
+<%= f.text_field :name %>
+</p>
+
+<%= f.label :photo %><br>
+<p>
+  <%= image_tag @developer.photo.url(:large), class: "" %>
+</p>
+  <p>
+    <%= f.file_field :photo  %>
+  </p>  
+
+<%= f.submit %>
+<% end %>

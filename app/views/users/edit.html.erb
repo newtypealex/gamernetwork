@@ -1,8 +1,9 @@
+<div class="row">
+  <div class="col-md-8">
 <h2>Edit User</h2>
 
 <%= form_for @user do |f| %>
   
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -29,12 +30,46 @@
 <% end %>
 <br/>
 
+
+
+<%= form_for @user do |f| %>
+<%= f.label :photo %><br>
+<p>
+  <%= image_tag @user.photo.url(:large), class: "" %>
+</p>
+  <p>
+    <%= f.file_field :photo  %>
+  </p>  
+     <%= f.submit %>
+ <% end %>
+
+ </div>
+
+<div class="col-md-4">
+<h1>Following</h1>
 <h3>Followed Games</h3>
  <%= form_for @user do |f| %>
   <p>
-  <%= collection_check_boxes(:user, :game_ids, Game.all, :id, :title) %>
+  <%= collection_check_boxes(:user, :game_ids, Game.all, :id, :title)%>
+  </p>
+     <%= f.submit %>
+ <% end %>
+
+<h3>Followed Platforms</h3>
+ <%= form_for @user do |f| %>
+  <p>
+  <%= collection_check_boxes(:user, :platform_ids, Platform.all, :id, :name)%>
+  </p>
+     <%= f.submit %>
+ <% end %>
+
+  <h3>Followed Developers</h3>
+ <%= form_for @user do |f| %>
+  <p>
+  <%= collection_check_boxes(:user, :developer_ids, Developer.all, :id, :name)%>
   </p>
    <%= f.submit %>
  <% end %>
 <br/>
-<br />
+</div>
+</div>

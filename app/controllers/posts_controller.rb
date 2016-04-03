@@ -18,12 +18,14 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
+    #returns all post minus current post, ordered by create date. 
+    #requires all_except to be defined in the model. 
+    @posts = Post.all_except(params[:id]).order(created_at: :desc)
+    
     # send empty @comment instance for comment form
     @comment = Comment.new
     @comments = @post.comments.order(created_at: :desc)
   end
-
 
   def new
     @post = Post.new
@@ -32,6 +34,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @posts = Post.all_except(params[:id]).order(created_at: :desc)
+
   end
 
   def update
@@ -53,7 +57,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id)
+    params.require(:post).permit(:title, :body, :user_id, :teaser, :photo)
   end
 
 end

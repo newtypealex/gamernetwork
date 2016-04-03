@@ -1,0 +1,23 @@
+<%= form_for @platform, html: { multipart: true } do |f| %>
+
+<% if @platform.errors.any? %>
+<% @platform.errors.full_messages.each do |message| %>
+<p><%= message %></p>
+<% end %>
+<% end %>
+
+<p>
+<%= f.label :name %><br>
+<%= f.text_field :name %>
+</p>
+
+<%= f.label :photo %><br>
+<p>
+  <%= image_tag @platform.photo.url(:large), class: "" %>
+</p>
+  <p>
+    <%= f.file_field :photo  %>
+  </p>  
+
+<%= f.submit %>
+<% end %>

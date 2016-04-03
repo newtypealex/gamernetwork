@@ -1,0 +1,16 @@
+<div class='row'>
+<% if current_user %>
+<%= link_to "Create New Developer", new_developer_path %>
+<% end %>
+<div id="" class="">
+    <% @developers.each do |developer| %>
+    <%= link_to developer_path(developer) do %>
+    <div class="col-md-4 developer">
+      <h2><%= developer.name %></h2>      
+      <p><%= image_tag developer.photo.url(:medium), class: "" %></p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -20,13 +20,14 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = User.find(current_user.id)
-    @posts = Post.find
+    @post = Post.new
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:title, :genre, :description, :launch_date, :game_ids => [])
+    params.require(:user).permit(:title, :genre, :description,:photo, :game_ids => [],:developer_ids => [],:platform_ids=>[])
   end
 
 end

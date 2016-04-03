@@ -1,40 +1,90 @@
-<h1>Users#dashboard</h1>
-<p>Find me in app/views/users/dashboard.html.erb</p>
-<p>YAY!</p>
-
-<div id="user-panel" class='col-md-4'>
-  <p>User Panel Area</p>
+<div class="row user-panel">
+  <div class="col-md-6">
+    <h3>User Panel <%= link_to "edit", edit_user_path(@user)%></h3>
+    <p><strong>Logged In As:</strong> <%= @user.email %></p>
+    <p>
+  <%= image_tag @user.photo.url(:medium), class: "" %>  
+</p>
 </div>
 
 <div class="col-md-6">
-    
+<h3>Following</h3>
+
+  <p>Followed Games</p>
+    <ul>
+      <% @user.games.each do |game| %>
+      <li><%= game.title %></li>
+      <% end %>
+    </ul>
+
+
+    <p>Followed Platforms</p>
+    <ul>
+      <% @user.platforms.each do |platform| %>
+      <li><%= platform.name %></li>
+      <% end %>
+    </ul>
+
+
+    <p>Followed Developers</p>
+    <ul>
+      <% @user.developers.each do |developer| %>
+      <li><%= developer.name %></li>
+      <% end %>
+    </ul>
+
+
+
+  </div>
+</div>
+<hr />
+<div class='row'>
+  <div class="col-md-6">
     <% if current_user %>
-      <h3>Add Post</h3>
+      <h3>Create New Post</h3>
       <%= form_for @post do |f| %>
         <p>
           <%= f.label :title %><br/>
           <%= f.text_field :title %>
         </p>
-
+        <p>
+          <%= f.label :photo %>
+          <%= f.file_field :photo  %>
+        </p>
+        <p>
+          <%= f.label :teaser %><br/>
+          <%= f.text_area :teaser, cols: "50", rows: "5" %>
+        </p>
         <p>
           <%= f.label :body %><br/>
-          <%= f.text_area :body %>
+          <%= f.text_area :body, cols: "70", rows: "10" %>
         </p>
-
-        <%= f.hidden_field :user_id, value: current_user.id %>
-
-        <%= f.submit %>
+          <%= f.hidden_field :user_id, value: current_user.id %>  
+          <%= f.submit %>
       <% end %>
-    <% end %>
-    
-    <h3>Post</h3>
-
-    <% @posts.each do |post| %>
-      <p>From: <%= post.user.email %></p>
-      <p>title: <%= post.title %></p>
-      <p><%= post.body %></p>
-      <p><%= post.created_at %></p>
       <hr/>
     <% end %>
+  </div>
+<div class="col-md-6">    
+  <h3>My Previous Posts</h3>
+
+    <% @posts.each do |post| %>
+    <div class="post">
+      <%= link_to post_path(post) do %>
+      <div>
+      <h4><%= post.title %></h4>
+      <p><%= image_tag post.photo.url(:medium), class: "" %></p>
+      <p><%= post.body %></p>
+      <p>on <%= post.created_at.to_formatted_s(:long) %></p>
+      </div>
+      <% end %>
+      <h6>Comments</h6>
+      <% @comments = post.comments %>
+      <% @comments.each do |comment| %>
+      <p><%= comment.body %>
+      by: <%= "#{comment.user.email}"+' on '+"#{comment.created_at.to_formatted_s(:long)}" %></p>
+        <% end %>
+      </div>
+      <% end %>
   </div>
 </div>

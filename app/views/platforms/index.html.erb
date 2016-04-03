@@ -1,0 +1,16 @@
+<div class='row'>
+<% if current_user %>
+<%= link_to "Create New Platform", new_platform_path %>
+<% end %>
+<div id="" class="">
+    <% @platforms.each do |platform| %>
+    <%= link_to platform_path(platform) do %>
+    <div class="col-md-4 platform">
+      <h2><%= platform.name %></h2>      
+      <p><%= image_tag platform.photo.url(:medium), class: "" %></p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+</div>

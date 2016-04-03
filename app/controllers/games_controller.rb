@@ -19,6 +19,7 @@ class GamesController < ApplicationController
 
 def show
   @game = Game.find(params[:id])
+  @posts = Post.all
 end
 
 def new
@@ -54,7 +55,7 @@ end
 #   end
 
 def game_params
-  params.require(:game).permit(:title, :genre, :description, :launch_date)
+  params.require(:game).permit(:title, :genre, :description, :launch_date, :photo)
 end
 
 end

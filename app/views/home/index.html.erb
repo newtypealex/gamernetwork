@@ -1,9 +1,14 @@
 <div class='row'>
-  <div id="user-panel" class='col-md-4'>
-    <p>User Panel Area</p>
-  </div>
-
-  <div id="social-panel" class='col-md-8'>
-    <p>Social Feed Panel</p>
+<div id="social-panel" class="">
+    <% @posts.each do |post| %>
+    <%= link_to post_path(post) do %>
+    <div class="col-md-4 post">
+      <h2><%= post.title %></h2>      
+      <p><%= image_tag post.photo.url(:medium), class: "" %></p>
+      <p><%= post.body %></p>
+      <p>by: <%= "#{post.user.email}"+' on '+"#{post.created_at.to_formatted_s(:long)}" %></p>
+    </div>
+    <% end %>
+    <% end %>
   </div>
 </div>

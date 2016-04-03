@@ -1,4 +1,4 @@
-<%= form_for @game do |f| %>
+<%= form_for @game, html: { multipart: true } do |f| %>
 
 <% if @game.errors.any? %>
 <% @game.errors.full_messages.each do |message| %>
@@ -18,13 +18,21 @@
 
 <p>
 <%= f.label :description %><br>
-<%= f.text_field :description %>
+<%= f.text_area :description, cols: "100", rows: "5"  %>
 </p>
 
 <p>
 <%= f.label :launch_date %><br>
 <%= f.text_field :launch_date %>
 </p>
+
+<%= f.label :photo %><br>
+<p>
+  <%= image_tag @game.photo.url(:large), class: "" %>
+</p>
+  <p>
+    <%= f.file_field :photo  %>
+  </p>  
 
 <%= f.submit %>
 <% end %>

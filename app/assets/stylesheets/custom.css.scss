@@ -3,11 +3,76 @@
 @import "bootstrap";
 
 
-#user-panel{
-  border: 1px;
-  background: rgba(195, 195, 195, 0.8);
+
+.container{
+  margin-bottom: 70px;
 }
 
-#social-panel{
-  background-color: #d0e4fe;
+.navbar-default {
+    background-color: #00cc99;
+    border-color: #b3ffec;
+}
+
+#footer {
+    position:fixed;
+    height:50px;
+    background-color:#e0ebeb;
+    bottom:0px;
+    margin-bottom:0px;
+    left:120px;
+    right:120px;
+}
+
+.user-panel{
+  background: #d1e0e0;
+}
+
+.post{
+  display: inline-block;
+  // width: 400px;
+  height: 500px;
+  // vertical-align: middle;
+  overflow: hidden;
+  border: 2px; 
+  border-style: solid;
+  border-color: #b3ffec;
+  padding: 5px;
+}
+
+
+.game{
+  display: inline-block;
+  // width: 400px;
+  height: 400px;
+  // vertical-align: middle;
+  overflow: hidden;
+  border: 2px; 
+  border-style: solid;
+  border-color: #b3ffec;
+  padding: 5px;
+}
+
+
+.platform{
+  display: inline-block;
+  // width: 400px;
+  height: 300px;
+  // vertical-align: middle;
+  overflow: hidden;
+  border: 2px; 
+  border-style: solid;
+  border-color: #b3ffec;
+  padding: 5px;
+}
+
+.developer{
+  display: inline-block;
+  // width: 400px;
+  height: 300px;
+  // vertical-align: middle;
+  overflow: hidden;
+  border: 2px; 
+  border-style: solid;
+  border-color: #b3ffec;
+  padding: 5px;
 }

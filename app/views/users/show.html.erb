@@ -1,12 +1,39 @@
-<h1>User Dashboard</h1>
-
-<p>
-  <strong>User:</strong> <%= @user.email %>
+<div class="row">
+<div class="col-md-8">
+<h1>User Settings</h1>
+<p><%= link_to "edit", edit_user_path(@user)%></p>
+<p><strong>User:</strong> <%= @user.email %>
 </p>
 
+
+<p>
+  <%= image_tag @user.photo.url(:large), class: "" %>  
+</p>
+</div>
+
+<div class="col-md-4">
+<h1>Following</h1>
 <p>Followed Games</p>
 <ul>
   <% @user.games.each do |game| %>
     <li><%= game.title %></li>
   <% end %>
 </ul>
+
+<p>Followed Platforms</p>
+<ul>
+  <% @user.platforms.each do |platform| %>
+    <li><%= platform.name %></li>
+  <% end %>
+</ul>
+
+
+<p>Followed Developers</p>
+<ul>
+  <% @user.developers.each do |developer| %>
+    <li><%= developer.name %></li>
+  <% end %>
+</ul>
+
+</div>
+</div>

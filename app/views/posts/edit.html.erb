@@ -3,3 +3,19 @@
 <%= link_to "Back to Post List", posts_path %>
 
 <%= render 'form' %>
+
+<div class="row">   
+    <h3>More Posts</h3>
+  <% @posts.each do |post| %>
+    <div class="col-md-4" >
+      <%= link_to post_path(post) do %>
+      <div>
+      <h4><%= post.title %></h4>
+      <p><%= image_tag post.photo.url(:medium), class: "" %></p>
+      <p><%= post.body %></p>
+      <p>on <%= post.created_at.to_formatted_s(:long) %></p>
+      </div>
+      <% end %>
+    </div>
+  <%end%>
+</div>

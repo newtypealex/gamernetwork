@@ -1,4 +1,5 @@
-<%= form_for @post do |f| %>
+<hr/>
+<%= form_for @post, html: { multipart: true } do |f| %>
 
 <% if @post.errors.any? %>
 <% @post.errors.full_messages.each do |message| %>
@@ -11,12 +12,27 @@
 <%= f.text_field :title %>
 </p>
 
+<%= f.label :photo %><br>
+<p>
+  <%= image_tag @post.photo.url(:large), class: "" %>
+</p>
+<p>
+  <%= f.file_field :photo  %>
+</p>
+
+<p>
+<%= f.label :teaser %><br>
+<%= f.text_area :teaser, cols: "100", rows: "5" %>
+</p>
+
 <p>
 <%= f.label :body %><br>
-<%= f.text_area :body %>
+<%= f.text_area :body, cols: "100", rows: "15" %>
 </p>
+
 
 <%= f.hidden_field :user_id, value: current_user.id %>
 
 <%= f.submit %>
 <% end %>
+<hr/>

@@ -31,10 +31,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-
   def edit
+    @user = User.find(current_user.id)
     @post = Post.find(params[:id])
-    @posts = Post.all_except(params[:id]).order(created_at: :desc)
+    @posts = @user.posts.all_except(params[:id]).order(created_at: :desc)
 
   end
 
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :teaser, :photo)
+    params.require(:post).permit(:title, :body, :user_id, :teaser, :photo, :tag_ids=>[])
   end
 
 end

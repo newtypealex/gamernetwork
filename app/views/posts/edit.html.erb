@@ -4,10 +4,11 @@
 
 <%= render 'form' %>
 
+
 <div class="row">   
-    <h3>More Posts</h3>
+    <h3>Edit My Other Posts</h3>
   <% @posts.each do |post| %>
-    <div class="col-md-4" >
+    <div class="col-md-4 post" >
       <%= link_to post_path(post) do %>
       <div>
       <h4><%= post.title %></h4>

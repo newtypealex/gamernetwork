@@ -4,6 +4,11 @@
     <h1><%= @post.title %></h1>
     <p><%= image_tag @post.photo.url(:large), class: "" %></p>
     <p><%= @post.body %></p>
+
+    <p>Tags:<% @post.tags.each do |tag| %>
+    <strong><%= tag.name %></strong>
+  <% end %></p>
+
     <p><strong>by: </strong><%= @post.user.email %></p>
 
   <% if @post.user == current_user %>
